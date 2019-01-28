@@ -3,13 +3,17 @@ body {
 }
 
 .title {
+  display: flex;
+  justify-content: space-between;
   background-color: dodgerBlue;
   padding: 10px;
   border-radius: 8px;
 }
-.title a {
+.title a,
+.title h1 {
   color: white;
 }
+
 
 .user-details {
   margin-top: 10px;

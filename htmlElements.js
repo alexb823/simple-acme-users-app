@@ -1,44 +1,42 @@
 /* eslint-disable no-unused-expressions */
-const { userId } = require('./userData');
 
-function pageHeader() {
-  let html = `
+function pageHeader(title) {
+  return `
     <head>
       <link rel="stylesheet" href="/styles/styles.css" />
     </head>
+    <div class='title'>
+    <h1 class="title"><a href="/">Home</a></h1>
+    <h1>${title}</h1>
+    </div>
   `;
-  return html;
 }
 
-function nav(title) {
-  let html = `
-    <h1 class="title"><a href="/">Home</a></h1>
-    <a href="/users">${title}</a>
+function nav(nav) {
+  return `
+    <a href="/users">${nav}</a>
   `;
-  return html;
 }
 
 function userInfo(usersArr) {
-  let html = `
+  return `
     <ul>
       ${usersArr
         .map(user => {
           return `<li>
-                      <a href="/users/${userId(user)}">${user.name}</a>
+                      <a href="/users/${user.id}">${user.name}</a>
                     </li>`;
         })
         .join('')}
     </ul>
   `;
-  return html;
 }
 
-function user(userName) {
-  let html = `
-    <div class="user-details">${userName}</div>
+function userDetail(user) {
+  return `
+    <div class="user-details">${user.name}</div>
   `;
-  return html;
 }
 
 
-module.exports = { pageHeader, nav, userInfo, user };
+module.exports = { pageHeader, nav, userInfo, userDetail };
