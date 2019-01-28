@@ -5,7 +5,7 @@ const { userList } = require('./userData');
 
 const app = express();
 app.use(morgan('dev'));
-app.use(express.static('styles'));
+app.use('/styles', express.static('styles'));
 
 //Home page
 app.get('/', (req, res) => {
@@ -82,8 +82,18 @@ app.get('/users/2', (req, res) => {
   );
 });
 
-const PORT = 1337;
+//For local server
+// const PORT = 1337;
+// app.listen(PORT, () => {
+//   console.log(`App listening in port ${PORT}`);
+// });
 
-app.listen(PORT, () => {
-  console.log(`App listening in port ${PORT}`);
-});
+//For cloud 9 server
+app.listen(process.env.PORT, process.env.IP, () => {
+  console.log('Server has started')
+})
+
+
+
+
+

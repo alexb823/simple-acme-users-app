@@ -4,7 +4,7 @@ const { userId } = require('./userData');
 function pageHeader() {
   let html = `
     <head>
-      <link rel="stylesheet" href="styles.css" />
+      <link rel="stylesheet" href="/styles/styles.css" />
     </head>
   `;
   return html;
