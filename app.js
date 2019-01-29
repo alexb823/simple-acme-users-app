@@ -8,16 +8,14 @@ const app = express();
 app.use(morgan('dev'));
 app.use('/styles', express.static('styles'));
 
-
-
 //Home page
 app.get('/', (req, res) => {
   res.send(
     `
       <html>
-      ${pageHeader('Welcome!')}
+        ${pageHeader('Welcome!')}
         <body>
-        ${nav('Users')}
+          ${nav('Users')}
         </body>
       </html>
     `
@@ -28,33 +26,30 @@ app.get('/', (req, res) => {
 app.get('/users', (req, res) => {
   res.send(
     `
-    <html>
-    ${pageHeader('Users List')}
-      <body>
-      ${nav('Users')}
-      ${userInfo(users)}
-      </body>
-    </html>
-  `
+      <html>
+        ${pageHeader('Users List')}
+        <body>
+          ${nav('Users')} ${userInfo(users)}
+        </body>
+      </html>
+    `
   );
 });
 
 //User info page
 app.get('/users/:id', (req, res) => {
-  const user = users.find(user => user.id === req.params.id*1)
+  const user = users.find(user => user.id === req.params.id * 1);
   res.send(
     `
-    <html>
-    ${pageHeader(`Info for ${user.name}`)}
-      <body>
-      ${nav('Users')}
-      ${userDetail(user)}
-      </body>
-    </html>
-  `
+      <html>
+        ${pageHeader(`Info for ${user.name}`)}
+        <body>
+          ${nav('Users')} ${userDetail(user)}
+        </body>
+      </html>
+    `
   );
 });
-
 
 //For local server
 const PORT = 1337;
@@ -66,7 +61,3 @@ app.listen(PORT, () => {
 // app.listen(process.env.PORT, process.env.IP, () => {
 //   console.log('Server has started')
 // })
-
-
-
-
